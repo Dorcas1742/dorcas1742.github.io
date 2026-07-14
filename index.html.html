@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agbo Dorcas Ojonuyo — Professional Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --forest:   #1B4332;
+    --sage:     #40916C;
+    --light-sage: #74C69D;
+    --mist:     #D8F3DC;
+    --pale:     #F0FAF3;
+    --gold:     #B5883E;
+    --gold-lt:  #F3E3C0;
+    --charcoal: #1C2B22;
+    --mid:      #52796F;
+    --text:     #2D3A30;
+    --white:    #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.75;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--forest);
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 0; padding: 0;
+    border-bottom: 3px solid var(--gold);
+  }
+  nav a {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--light-sage);
+    text-decoration: none;
+    padding: 14px 18px;
+    transition: background 0.2s, color 0.2s;
+  }
+  nav a:hover { background: var(--sage); color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--forest);
+    padding: 80px 40px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 60px,
+      rgba(64,145,108,0.07) 60px,
+      rgba(64,145,108,0.07) 61px
+    );
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 600; letter-spacing: -0.01em;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; font-weight: 400; color: var(--light-sage);
+    max-width: 640px; margin: 0 auto 32px;
+    line-height: 1.9; letter-spacing: 0.02em;
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  }
+  .hero-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(116,198,157,0.4);
+    color: var(--light-sage);
+    padding: 6px 16px; border-radius: 2px;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 64px 0 40px; border-bottom: 1px solid #E0EDE5; }
+  section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 28px; font-weight: 600; color: var(--forest);
+    border-bottom: 2px solid var(--mist);
+    padding-bottom: 12px; margin-bottom: 32px;
+  }
+
+  /* ── SUMMARY ── */
+  .summary-text {
+    font-size: 18px; line-height: 1.85;
+    color: var(--text);
+    max-width: 820px;
+  }
+  .summary-text + .summary-text { margin-top: 16px; }
+
+  /* ── COMPETENCY GRID ── */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .comp-item {
+    background: var(--pale);
+    border-left: 3px solid var(--sage);
+    padding: 12px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px; font-weight: 500; color: var(--forest);
+  }
+
+  /* ── ENTRY CARD ── */
+  .entry { margin-bottom: 48px; }
+  .entry-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; }
+  .entry-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 21px; font-weight: 600; color: var(--forest);
+  }
+  .entry-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 500; color: var(--mid);
+    background: var(--mist); padding: 4px 12px; border-radius: 2px;
+    white-space: nowrap;
+  }
+  .entry-org {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px; font-weight: 600; color: var(--sage);
+    margin: 4px 0 12px;
+  }
+  .entry-desc {
+    font-size: 16.5px; line-height: 1.8; color: var(--text);
+    margin-bottom: 14px;
+  }
+  .entry-bullets { list-style: none; padding: 0; }
+  .entry-bullets li {
+    font-size: 16px; line-height: 1.75;
+    padding: 5px 0 5px 20px;
+    position: relative; color: var(--text);
+  }
+  .entry-bullets li::before {
+    content: "▸"; position: absolute; left: 0;
+    color: var(--sage); font-size: 12px; top: 8px;
+  }
+
+  /* ── SKILL TABLE ── */
+  .skill-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  @media (max-width: 600px) { .skill-grid { grid-template-columns: 1fr; } }
+
+  .skill-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--sage); margin: 28px 0 12px;
+  }
+
+  /* ── CERT TABLE ── */
+  .cert-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cert-table th {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--forest); color: var(--white);
+    padding: 12px 16px; text-align: left;
+  }
+  .cert-table td {
+    font-size: 15px; padding: 11px 16px;
+    border-bottom: 1px solid var(--mist);
+  }
+  .cert-table tr:nth-child(even) td { background: var(--pale); }
+
+  /* ── RESEARCH TAGS ── */
+  .research-tags {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;
+  }
+  .research-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 500;
+    background: var(--mist);
+    color: var(--forest);
+    border: 1px solid #B7DFC3;
+    padding: 6px 14px; border-radius: 2px;
+  }
+
+  /* ── VISION ── */
+  .vision-box {
+    background: var(--forest);
+    color: var(--white);
+    padding: 44px 48px;
+    border-left: 5px solid var(--gold);
+    margin-top: 16px;
+  }
+  .vision-box p {
+    font-family: 'EB Garamond', serif;
+    font-size: 19px; line-height: 1.9;
+    color: rgba(255,255,255,0.92);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal);
+    text-align: center;
+    padding: 36px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    nav { display: none; }
+    .hero { padding: 40px 20px; }
+    section { padding: 32px 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#summary">Summary</a>
+  <a href="#competencies">Competencies</a>
+  <a href="#education">Education</a>
+  <a href="#experience">Experience</a>
+  <a href="#initiatives">Initiatives</a>
+  <a href="#ai">AI & Tech</a>
+  <a href="#certifications">Certifications</a>
+  <a href="#leadership">Leadership</a>
+  <a href="#skills">Skills</a>
+  <a href="#research">Research</a>
+  <a href="#vision">Vision</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Professional Portfolio · 2025–2026</p>
+  <h1>Agbo Dorcas Ojonuyo</h1>
+  <p class="hero-subtitle">
+    Environmental Sustainability Professional &nbsp;·&nbsp; Climate Advocate &nbsp;·&nbsp; Researcher<br>
+    Science Communicator &nbsp;·&nbsp; AI & Automation Enthusiast &nbsp;·&nbsp; Entrepreneur
+  </p>
+  <div class="hero-tags">
+    <span class="hero-tag">Environment</span>
+    <span class="hero-tag">Climate</span>
+    <span class="hero-tag">Research</span>
+    <span class="hero-tag">AI & Tech</span>
+    <span class="hero-tag">Community</span>
+    <span class="hero-tag">Leadership</span>
+    <span class="hero-tag">Sustainability</span>
+    <span class="hero-tag">Communication</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- SUMMARY -->
+<section id="summary">
+  <p class="section-label">Who I Am</p>
+  <h2 class="section-title">Professional Summary</h2>
+  <p class="summary-text">
+    I am an environmental sustainability professional, researcher, and climate advocate with a First Class Honours degree in Forestry and Wildlife Management from Ahmadu Bello University. My work sits at the intersection of environmental science, climate policy, technology, and community development — a deliberate positioning that allows me to bridge rigorous scientific thinking with practical, people-centred solutions.
+  </p>
+  <p class="summary-text" style="margin-top:16px">
+    Through my work at the International Centre for Energy, Environment and Development (ICEED), my founding of the Green Revolution Initiative, and my growing expertise in AI and automation, I have cultivated a rare combination of scientific depth, communication strength, and innovation thinking. I am committed to designing evidence-based, technology-enabled solutions that protect ecosystems, advance environmental health, empower communities, and accelerate sustainable development at local, national, and global scales.
+  </p>
+</section>
+
+<!-- COMPETENCIES -->
+<section id="competencies">
+  <p class="section-label">What I Do</p>
+  <h2 class="section-title">Core Competencies</h2>
+  <div class="comp-grid">
+    <div class="comp-item">Environmental Sustainability & Conservation</div>
+    <div class="comp-item">Climate Change Research & Advocacy</div>
+    <div class="comp-item">Forest Ecology & Biodiversity Assessment</div>
+    <div class="comp-item">Remote Sensing & GIS Mapping</div>
+    <div class="comp-item">Agroforestry & Silviculture</div>
+    <div class="comp-item">Environmental Health & Pollution Management</div>
+    <div class="comp-item">Science & Climate Communication</div>
+    <div class="comp-item">AI Tools & Workflow Automation</div>
+    <div class="comp-item">Monitoring, Evaluation & Learning (MEAL)</div>
+    <div class="comp-item">Project Management & Coordination</div>
+    <div class="comp-item">Stakeholder Engagement & Partnerships</div>
+    <div class="comp-item">Research Design & Academic Writing</div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label">Academic Foundation</p>
+  <h2 class="section-title">Education</h2>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">B.Sc. Forestry and Wildlife Management — First Class Honours</span>
+      <span class="entry-meta">December 2024</span>
+    </div>
+    <p class="entry-org">Ahmadu Bello University, Zaria, Nigeria</p>
+    <div class="skill-grid">
+      <ul class="entry-bullets">
+        <li>Forestry & Wildlife Management</li>
+        <li>Biodiversity Conservation & Forest Ecology</li>
+        <li>Agroforestry & Silviculture</li>
+        <li>Forest Economics & Management</li>
+        <li>Plantation Techniques & Horticulture</li>
+      </ul>
+      <ul class="entry-bullets">
+        <li>Remote Sensing & GIS Mapping</li>
+        <li>Environmental Conservation</li>
+        <li>Climate Change & Natural Resource Management</li>
+        <li>Statistics, Biometrics & Research Methods</li>
+        <li>Experimental Design & Data Analysis</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="entry" style="background:var(--pale); padding:28px 32px; border-left:4px solid var(--gold);">
+    <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Undergraduate Research</p>
+    <p class="entry-title" style="font-size:18px; margin-bottom:12px;">Improvement on the Efficiency of Cuttings and Marcotting Propagation Techniques of Kolanut (<em>Cola acuminata</em>) Using Organic Supplements</p>
+    <p class="entry-desc">This research investigated the potential of locally available organic supplements to improve the rooting efficiency of vegetative propagation techniques in Kolanut — an economically and culturally significant tree species. The study generated evidence for low-cost, indigenous-knowledge-driven approaches to tree propagation in sustainable agriculture and agroforestry.</p>
+    <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:600; color:var(--sage); margin-bottom:8px;">Organic supplements tested:</p>
+    <div class="research-tags">
+      <span class="research-tag">Aloe vera</span><span class="research-tag">Onion</span><span class="research-tag">Garlic</span>
+      <span class="research-tag">Banana peel</span><span class="research-tag">Moringa</span><span class="research-tag">Ginger</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Professional Journey</p>
+  <h2 class="section-title">Professional Experience</h2>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Research & Communication Intern</span>
+      <span class="entry-meta">2024 – Present</span>
+    </div>
+    <p class="entry-org">International Centre for Energy, Environment and Development (ICEED) · Abuja, Nigeria</p>
+    <p class="entry-desc">ICEED is a leading Nigerian research and advocacy organisation working on clean energy, climate change, and sustainable development.</p>
+    <ul class="entry-bullets">
+      <li>Conducted environmental and climate research to support advocacy and policy communication activities</li>
+      <li>Developed press releases, newsletters, and policy briefs communicating complex environmental issues to diverse audiences</li>
+      <li>Supported stakeholder engagement, event coordination, and documentation for national and international programmes</li>
+      <li>Contributed to climate advocacy campaigns on clean cooking, sustainable energy, and community resilience</li>
+      <li>Participated in high-level forums and stakeholder consultations on clean cooking and carbon finance</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Administrative Officer / School Administrator</span>
+    </div>
+    <p class="entry-org">Premium Daycare, Nursery & Primary School · Nigeria</p>
+    <ul class="entry-bullets">
+      <li>Managed day-to-day school operations including staff coordination, record management, and academic scheduling</li>
+      <li>Served as primary point of contact for parents, demonstrating strong interpersonal and communication skills</li>
+      <li>Oversaw administrative systems, budget tracking, and operational planning</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Industrial Training (SIWES)</span>
+    </div>
+    <p class="entry-org">Forestry Research Institute of Nigeria</p>
+    <ul class="entry-bullets">
+      <li>Gained hands-on experience in silviculture, plantation establishment, and forest management</li>
+      <li>Conducted forest rambling, field assessments, and forest mapping exercises</li>
+      <li>Applied remote sensing and GIS tools for forest inventory and resource management</li>
+      <li>Participated in horticultural practices, agroforestry demonstrations, and research activities</li>
+    </ul>
+  </div>
+</section>
+
+<!-- INITIATIVES -->
+<section id="initiatives">
+  <p class="section-label">Community Impact</p>
+  <h2 class="section-title">Environmental Initiatives & Projects</h2>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Green Revolution Initiative</span>
+      <span class="entry-meta">Founder & Lead</span>
+    </div>
+    <p class="entry-desc">Founded and led a community-based environmental initiative promoting sustainability through tree planting, environmental education, and youth engagement. The initiative aims to create a generation of environmentally conscious citizens equipped to drive local climate action.</p>
+  </div>
+
+  <div class="entry" style="background:var(--pale); padding:28px 32px; border-left:4px solid var(--sage);">
+    <p class="entry-title">Eco-Scholars Campaign</p>
+    <p class="entry-desc" style="margin-top:8px;">A school-based environmental education campaign targeting primary school pupils to promote climate literacy, environmental stewardship, and hands-on tree planting.</p>
+    <p style="font-family:'Inter',sans-serif; font-size:12px; font-weight:700; color:var(--forest); margin: 16px 0 10px; letter-spacing:0.06em; text-transform:uppercase;">Phase One Achievements</p>
+    <ul class="entry-bullets">
+      <li>Engaged approximately <strong>200 pupils</strong> across three schools in environmental education and tree planting</li>
+      <li>Species planted: <em>Delonix regia</em> (Flame of the Forest), <em>Mangifera indica</em> (Mango), <em>Persea americana</em> (Avocado), <em>Terminalia catappa</em> (Tropical Almond)</li>
+      <li>Built partnerships with school administrators, teachers, and community leaders</li>
+    </ul>
+  </div>
+</section>
+
+<!-- AI & AUTOMATION -->
+<section id="ai">
+  <p class="section-label">Innovation</p>
+  <h2 class="section-title">AI & Automation</h2>
+  <p class="entry-desc">I have intentionally built expertise in AI tools and workflow automation as part of a deliberate strategy to position myself at the frontier of technology-enabled environmental solutions. I share AI learning and insights publicly on LinkedIn, contributing to awareness of how AI can be applied responsibly in sustainability, research, and organisational efficiency.</p>
+  <div class="comp-grid" style="margin-top:20px;">
+    <div class="comp-item">AI Productivity & Prompt Engineering</div>
+    <div class="comp-item">Workflow Automation (Zapier)</div>
+    <div class="comp-item">AI-Assisted Research & Analysis</div>
+    <div class="comp-item">AI for Environmental Management</div>
+    <div class="comp-item">Smart Workflow Design</div>
+    <div class="comp-item">Digital Productivity Systems</div>
+    <div class="comp-item">AI for Sustainability Applications</div>
+    <div class="comp-item">AI Communication & Content Strategy</div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <p class="section-label">Professional Development</p>
+  <h2 class="section-title">Certifications</h2>
+  <table class="cert-table">
+    <thead>
+      <tr><th>Certification</th><th>Issuing Body</th><th>Year</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Leadership Essentials</td><td>DisasterReady</td><td>2024–2025</td></tr>
+      <tr><td>Marketing Essentials</td><td>DisasterReady</td><td>2024–2025</td></tr>
+      <tr><td>Project Management</td><td>DisasterReady</td><td>2024–2025</td></tr>
+      <tr><td>MEAL Essentials (Monitoring, Evaluation, Accountability & Learning)</td><td>DisasterReady</td><td>2024–2025</td></tr>
+      <tr><td>Nonprofit Essentials</td><td>DisasterReady</td><td>2024–2025</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <p class="section-label">Service & Responsibility</p>
+  <h2 class="section-title">Leadership Experience</h2>
+  <p class="entry-desc">I have held numerous elected and appointed leadership positions throughout my academic and community life, demonstrating consistent trust from peers and institutional confidence in my capabilities.</p>
+  <div class="skill-grid" style="margin-top:20px;">
+    <ul class="entry-bullets">
+      <li>Welfare Director (two tenures)</li>
+      <li>Financial Secretary</li>
+      <li>Treasurer</li>
+      <li>Academic Director</li>
+    </ul>
+    <ul class="entry-bullets">
+      <li>Class Representative</li>
+      <li>Student Leader</li>
+      <li>Forum Planning Committee Member</li>
+      <li>Community Initiative Founder</li>
+    </ul>
+  </div>
+  <p style="font-family:'Inter',sans-serif; font-size:13px; color:var(--mid); margin-top:20px; font-style:italic;">
+    Leadership strengths: team coordination · event planning · financial accountability · conflict resolution · public speaking · student welfare · strategic planning
+  </p>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">Capabilities</p>
+  <h2 class="section-title">Technical & Professional Skills</h2>
+
+  <p class="skill-sub">Environmental & Scientific</p>
+  <div class="skill-grid">
+    <ul class="entry-bullets">
+      <li>Remote Sensing & GIS Mapping</li>
+      <li>Forest Inventory & Assessment</li>
+      <li>Agroforestry & Silviculture</li>
+      <li>Biodiversity Assessment</li>
+    </ul>
+    <ul class="entry-bullets">
+      <li>Plantation Management</li>
+      <li>Environmental Research</li>
+      <li>Environmental Health Assessment</li>
+      <li>Carbon Sequestration Analysis</li>
+    </ul>
+  </div>
+
+  <p class="skill-sub">Research & Communication</p>
+  <div class="skill-grid">
+    <ul class="entry-bullets">
+      <li>Academic & Technical Writing</li>
+      <li>Literature Review & Synthesis</li>
+      <li>Science & Climate Communication</li>
+      <li>Report & Policy Brief Writing</li>
+    </ul>
+    <ul class="entry-bullets">
+      <li>Environmental Storytelling</li>
+      <li>Social Media & LinkedIn Advocacy</li>
+      <li>Newsletter Development</li>
+      <li>Press Release Writing</li>
+    </ul>
+  </div>
+
+  <p class="skill-sub">Technology & Project Management</p>
+  <div class="skill-grid">
+    <ul class="entry-bullets">
+      <li>Microsoft Office Suite & Google Workspace</li>
+      <li>AI Tools & Prompt Engineering</li>
+      <li>Workflow Automation (Zapier)</li>
+      <li>Canva & Presentation Design</li>
+    </ul>
+    <ul class="entry-bullets">
+      <li>Project Management & Coordination</li>
+      <li>MEAL Frameworks</li>
+      <li>Stakeholder Engagement</li>
+      <li>Event Coordination & Documentation</li>
+    </ul>
+  </div>
+
+  <p class="skill-sub">Creative & Entrepreneurial</p>
+  <div class="skill-grid">
+    <ul class="entry-bullets">
+      <li>Spoken Word Performance & Climate Advocacy</li>
+      <li>Bespoke Fashion Design (DA' Elegant Hem Aura)</li>
+    </ul>
+    <ul class="entry-bullets">
+      <li>Pattern Drafting & Garment Construction</li>
+      <li>Fashion Consultation & Brand Management</li>
+    </ul>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <p class="section-label">Intellectual Curiosity</p>
+  <h2 class="section-title">Research Interests</h2>
+  <p class="entry-desc">My research interests span the full arc from ecological science to applied sustainability, with particular focus on the environment-health nexus:</p>
+  <div class="research-tags">
+    <span class="research-tag">Climate Change & Environmental Health</span>
+    <span class="research-tag">Forest Carbon & Ecosystem Services</span>
+    <span class="research-tag">Biodiversity & Wildlife Ecology</span>
+    <span class="research-tag">Pollution, Air & Water Quality</span>
+    <span class="research-tag">Remote Sensing & GIS</span>
+    <span class="research-tag">Nature-Based Solutions</span>
+    <span class="research-tag">Clean Cooking & Renewable Energy</span>
+    <span class="research-tag">Circular Economy & Waste Management</span>
+    <span class="research-tag">Arctic & Boreal Ecosystems</span>
+    <span class="research-tag">AI for Environmental Management</span>
+    <span class="research-tag">Sustainable Cities & Green Infrastructure</span>
+    <span class="research-tag">Climate Adaptation & Community Resilience</span>
+  </div>
+</section>
+
+<!-- VISION -->
+<section id="vision">
+  <p class="section-label">Looking Forward</p>
+  <h2 class="section-title">Professional Vision</h2>
+  <div class="vision-box">
+    <p>My long-term ambition is to become a globally recognised leader working at the intersection of environmental sustainability, environmental health, artificial intelligence, and climate policy. I aim to design and lead evidence-based, technology-enabled interventions that protect ecosystems, improve public health, empower communities, and advance sustainable development — locally, nationally, and globally.</p>
+    <p style="margin-top:18px; color:rgba(255,255,255,0.65); font-size:16px; font-style:italic;">I am committed to pursuing graduate studies internationally as the next step in building the depth of expertise and the global network that this vision requires.</p>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<footer>
+  Agbo Dorcas Ojonuyo &nbsp;·&nbsp; Professional Portfolio &nbsp;·&nbsp; 2025–2026 &nbsp;·&nbsp; Nigeria
+</footer>
+
+</body>
+</html>
