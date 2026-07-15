@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agbo Dorcas Ojonuyo · Environmental Sustainability Professional</title>
+<style>
+/* ─── TOKENS ──────────────────────────────────────────── */
+:root {
+  --ink:        #0E1A12;
+  --forest:     #1B4332;
+  --canopy:     #2D6A4F;
+  --leaf:       #52B788;
+  --mist:       #D8F3DC;
+  --pale:       #F4FAF6;
+  --gold:       #C9882A;
+  --gold-lt:    #FBF0DA;
+  --soil:       #6B4226;
+  --white:      #FFFFFF;
+  --mid:        #4A7C59;
+  --muted:      #6E8F78;
+  --border:     #D0E8D8;
+  --ff-display: 'EB Garamond', Georgia, serif;
+  --ff-body:    'Inter', system-ui, sans-serif;
+  --ff-mono:    'JetBrains Mono', monospace;
+}
+
+/* ─── RESET ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--ff-body); color: var(--ink); background: var(--white); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* ─── NAV ────────────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--forest);
+  border-bottom: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 56px;
+}
+.nav-logo {
+  font-family: var(--ff-display);
+  font-size: 20px; color: var(--white); letter-spacing: 0.01em;
+}
+.nav-links { display: flex; gap: 0; }
+.nav-links a {
+  font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.65); padding: 0 16px; height: 56px;
+  display: flex; align-items: center;
+  border-bottom: 2px solid transparent; margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-links a:hover { color: var(--white); border-color: var(--leaf); }
+.nav-cta {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+  background: var(--gold); color: var(--white);
+  padding: 8px 20px; border-radius: 2px;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: #b07a24; }
+
+/* ─── HERO ──────────────────────────────────────────── */
+.hero {
+  background: var(--forest);
+  padding: 100px 40px 88px;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 64px;
+  align-items: center;
+  max-width: 1100px; margin: 0 auto;
+}
+.hero-eyebrow {
+  font-family: var(--ff-body);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--leaf); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ""; display: inline-block;
+  width: 28px; height: 1.5px; background: var(--leaf);
+}
+.hero h1 {
+  font-family: var(--ff-display);
+  font-size: clamp(36px, 5vw, 62px);
+  font-weight: 600; line-height: 1.1;
+  color: var(--white); margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+.hero h1 em {
+  font-style: italic; color: var(--leaf);
+}
+.hero-desc {
+  font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.72);
+  max-width: 520px; margin-bottom: 40px;
+}
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+  background: var(--gold); color: var(--white);
+  padding: 13px 28px; border-radius: 2px;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: #b07a24; }
+.btn-ghost {
+  font-size: 13px; font-weight: 500;
+  border: 1.5px solid rgba(255,255,255,0.28); color: rgba(255,255,255,0.82);
+  padding: 12px 28px; border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: var(--leaf); color: var(--white); }
+
+/* Hero card */
+.hero-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  padding: 36px 32px;
+}
+.hero-card-title {
+  font-family: var(--ff-body);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--leaf); margin-bottom: 20px;
+}
+.stat-row { display: flex; flex-direction: column; gap: 20px; }
+.stat-item {}
+.stat-num {
+  font-family: var(--ff-display);
+  font-size: 38px; font-weight: 600; color: var(--white);
+  line-height: 1; margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.4;
+}
+.stat-divider { height: 1px; background: rgba(255,255,255,0.1); }
+
+/* ─── WRAPPER ────────────────────────────────────────── */
+.section-wrap {
+  max-width: 1100px; margin: 0 auto; padding: 0 40px;
+}
+.section { padding: 80px 0 60px; border-bottom: 1px solid var(--border); }
+.section:last-of-type { border-bottom: none; }
+
+.s-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px;
+}
+.s-title {
+  font-family: var(--ff-display);
+  font-size: clamp(28px, 4vw, 44px); font-weight: 600;
+  color: var(--forest); line-height: 1.15; margin-bottom: 14px;
+}
+.s-title em { font-style: italic; color: var(--canopy); }
+.s-sub {
+  font-size: 16px; color: var(--muted); line-height: 1.7;
+  max-width: 600px; margin-bottom: 48px;
+}
+
+/* ─── COMPARE BLOCK ──────────────────────────────────── */
+.compare {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+  margin-bottom: 48px;
+}
+.compare-col { padding: 32px 28px; }
+.compare-col:first-child { background: var(--pale); }
+.compare-col:last-child  { background: var(--forest); }
+.compare-hdr {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.compare-col:first-child .compare-hdr { color: var(--muted); }
+.compare-col:last-child  .compare-hdr { color: var(--leaf); }
+.compare-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.compare-list li {
+  font-size: 15px; padding-left: 20px; position: relative; line-height: 1.55;
+}
+.compare-col:first-child .compare-list li { color: #6B7A6F; }
+.compare-col:first-child .compare-list li::before { content: "✕"; position: absolute; left: 0; color: #C9534F; font-size: 12px; top: 2px; }
+.compare-col:last-child  .compare-list li { color: rgba(255,255,255,0.85); }
+.compare-col:last-child  .compare-list li::before { content: "✓"; position: absolute; left: 0; color: var(--leaf); font-size: 12px; top: 2px; }
+
+/* ─── SERVICE CARDS ─────────────────────────────────── */
+.service-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.s-card {
+  background: var(--pale);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--canopy);
+  padding: 28px 24px;
+  border-radius: 2px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.s-card:hover { box-shadow: 0 8px 32px rgba(27,67,50,0.1); transform: translateY(-2px); }
+.s-card.gold-top { border-top-color: var(--gold); }
+.s-card-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px;
+}
+.s-card h3 {
+  font-family: var(--ff-display);
+  font-size: 19px; font-weight: 600; color: var(--forest);
+  margin-bottom: 10px; line-height: 1.3;
+}
+.s-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+/* ─── PORTFOLIO / WORK ──────────────────────────────── */
+.work-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+}
+.work-card {
+  background: var(--pale);
+  border: 1px solid var(--border);
+  border-radius: 4px; overflow: hidden;
+}
+.work-card-img {
+  height: 160px; background: var(--mist);
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid var(--border);
+}
+.work-icon { font-size: 48px; }
+.work-card-body { padding: 24px; }
+.work-card-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
+}
+.work-card h3 {
+  font-family: var(--ff-display);
+  font-size: 18px; font-weight: 600; color: var(--forest);
+  margin-bottom: 8px; line-height: 1.3;
+}
+.work-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ─── ABOUT ─────────────────────────────────────────── */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+}
+.about-text p {
+  font-size: 16px; line-height: 1.85; color: #3A4E3E; margin-bottom: 18px;
+}
+.about-text strong { color: var(--forest); font-weight: 600; }
+.about-attrs { display: flex; flex-direction: column; gap: 20px; }
+.attr-card {
+  border-left: 3px solid var(--leaf);
+  padding: 14px 18px;
+  background: var(--pale);
+}
+.attr-card h4 {
+  font-size: 14px; font-weight: 600; color: var(--forest); margin-bottom: 4px;
+}
+.attr-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+/* ─── CERTS ─────────────────────────────────────────── */
+.cert-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0; border-bottom: 1px solid var(--border);
+  flex-wrap: wrap; gap: 10px;
+}
+.cert-row:last-child { border-bottom: none; }
+.cert-name { font-size: 15px; font-weight: 500; color: var(--ink); }
+.cert-body { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.cert-badge {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+  background: var(--mist); color: var(--canopy);
+  padding: 4px 12px; border-radius: 2px; white-space: nowrap;
+}
+
+/* ─── TOOLS ─────────────────────────────────────────── */
+.tools-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px;
+}
+.tool-chip {
+  background: var(--pale); border: 1px solid var(--border);
+  font-size: 13px; font-weight: 500; color: var(--forest);
+  padding: 10px 14px; text-align: center; border-radius: 2px;
+}
+
+/* ─── PROCESS ───────────────────────────────────────── */
+.process-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+}
+.proc-step {
+  background: var(--pale); border: 1px solid var(--border);
+  padding: 28px 22px;
+}
+.proc-num {
+  font-family: var(--ff-display);
+  font-size: 36px; font-weight: 600;
+  color: var(--mist); margin-bottom: 12px; line-height: 1;
+}
+.proc-title { font-size: 14px; font-weight: 600; color: var(--forest); margin-bottom: 8px; }
+.proc-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ─── CTA BANNER ────────────────────────────────────── */
+.cta-banner {
+  background: var(--forest);
+  padding: 72px 40px;
+  text-align: center;
+}
+.cta-banner h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(28px, 4vw, 48px); font-weight: 600;
+  color: var(--white); margin-bottom: 16px; line-height: 1.2;
+}
+.cta-banner p {
+  font-size: 16px; color: rgba(255,255,255,0.65);
+  max-width: 500px; margin: 0 auto 36px; line-height: 1.75;
+}
+.cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ─── FOOTER ─────────────────────────────────────────── */
+footer {
+  background: var(--ink);
+  padding: 36px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-name {
+  font-family: var(--ff-display);
+  font-size: 18px; color: rgba(255,255,255,0.5);
+}
+.footer-links { display: flex; gap: 24px; }
+.footer-links a {
+  font-size: 13px; color: rgba(255,255,255,0.35);
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--leaf); }
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 800px) {
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+  .hero-card { display: none; }
+  .section-wrap { padding: 0 24px; }
+  .compare { grid-template-columns: 1fr; }
+  .service-grid { grid-template-columns: 1fr; }
+  .work-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+  footer { flex-direction: column; text-align: center; }
+}
+
+/* ─── HERO BG FULL WIDTH ─────────────────────────────── */
+.hero-bg { background: var(--forest); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <span class="nav-logo">Dorcas.</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#work">Work</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="mailto:your@email.com">Get in touch</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero-bg">
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Environmental Sustainability Professional · Nigeria</p>
+      <h1>The planet needs science <em>and</em> people who can communicate it.</h1>
+      <p class="hero-desc">
+        I am an environmental researcher, climate advocate, and science communicator with a First Class in Forestry and Wildlife Management — combining ecological expertise with AI tools, policy thinking, and storytelling to drive real environmental change.
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#work">See my work</a>
+        <a class="btn-ghost" href="#contact">Connect with me</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <p class="hero-card-title">At a glance</p>
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-num">1st</div>
+          <div class="stat-label">Class Honours, Forestry &amp; Wildlife Management — Ahmadu Bello University</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">200+</div>
+          <div class="stat-label">Pupils engaged in environmental education across three schools</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Professional certifications in leadership, project management &amp; MEAL</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Years of climate &amp; sustainability advocacy at ICEED, Abuja</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE -->
+<div class="section-wrap">
+  <section class="section" id="value">
+    <p class="s-label">Why it matters</p>
+    <h2 class="s-title">The gap between <em>good science</em><br>and lasting impact</h2>
+    <p class="s-sub">Most environmental challenges are not solved by knowledge alone. They need people who can research, communicate, lead, and act — all at once.</p>
+    <div class="compare">
+      <div class="compare-col">
+        <p class="compare-hdr">Without this bridge</p>
+        <ul class="compare-list">
+          <li>Research stays in reports nobody reads</li>
+          <li>Communities are left out of conservation decisions</li>
+          <li>Climate data never reaches policymakers</li>
+          <li>Youth engagement in climate action stays low</li>
+          <li>Technology and environment work in silos</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <p class="compare-hdr">With Dorcas</p>
+        <ul class="compare-list">
+          <li>Research is translated into action and policy</li>
+          <li>Communities become partners in sustainability</li>
+          <li>Climate stories reach the people who can act on them</li>
+          <li>Young people are equipped and inspired</li>
+          <li>AI and data tools amplify environmental impact</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- EXPERTISE / SERVICES -->
+<div class="section-wrap">
+  <section class="section" id="expertise">
+    <p class="s-label">What I do</p>
+    <h2 class="s-title">Expertise built for the <em>climate era</em></h2>
+    <p class="s-sub">From forest field assessments to carbon policy briefings to AI-powered research workflows — my work spans the full arc of environmental practice.</p>
+    <div class="service-grid">
+      <div class="s-card gold-top">
+        <p class="s-card-tag">Core strength</p>
+        <h3>Environmental Research & Analysis</h3>
+        <p>Forest ecology, biodiversity assessment, experimental design, remote sensing, GIS mapping, and data analysis — from field to report.</p>
+      </div>
+      <div class="s-card gold-top">
+        <p class="s-card-tag">Core strength</p>
+        <h3>Climate & Science Communication</h3>
+        <p>Policy briefs, newsletters, press releases, and advocacy materials that translate complex environmental science into compelling action.</p>
+      </div>
+      <div class="s-card gold-top">
+        <p class="s-card-tag">Core strength</p>
+        <h3>Environmental Education & Youth Engagement</h3>
+        <p>Designing and delivering community-based programmes that connect young people to climate action through education, storytelling, and tree planting.</p>
+      </div>
+      <div class="s-card">
+        <p class="s-card-tag">Growing expertise</p>
+        <h3>AI & Workflow Automation</h3>
+        <p>Applying AI tools and automation (Zapier, prompt engineering) to environmental research, reporting, and organisational efficiency.</p>
+      </div>
+      <div class="s-card">
+        <p class="s-card-tag">Growing expertise</p>
+        <h3>Project Management & MEAL</h3>
+        <p>Planning, coordinating, and monitoring environmental and development projects with accountability and evidence-based learning frameworks.</p>
+      </div>
+      <div class="s-card">
+        <p class="s-card-tag">Creative practice</p>
+        <h3>Spoken Word & Environmental Advocacy</h3>
+        <p>Using spoken word performance to inspire climate action, engage diverse audiences, and give voice to communities affected by environmental change.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- WORK / PORTFOLIO -->
+<div class="section-wrap">
+  <section class="section" id="work">
+    <p class="s-label">Portfolio</p>
+    <h2 class="s-title">Real work. <em>Real impact.</em></h2>
+    <p class="s-sub">Selected projects that demonstrate what I bring to environmental research, advocacy, and community engagement.</p>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-card-img"><span class="work-icon">🌿</span></div>
+        <div class="work-card-body">
+          <p class="work-card-tag">Undergraduate Research</p>
+          <h3>Kolanut Propagation Using Organic Supplements</h3>
+          <p>Investigated aloe vera, moringa, garlic, and ginger as natural rooting stimulants for Cola acuminata cuttings and marcotting — a low-cost, indigenous-knowledge approach to sustainable agroforestry.</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-card-img"><span class="work-icon">🌍</span></div>
+        <div class="work-card-body">
+          <p class="work-card-tag">Community Initiative · Founder</p>
+          <h3>Eco-Scholars Campaign — Green Revolution Initiative</h3>
+          <p>Designed and delivered a school-based environmental education and tree planting programme that engaged 200+ pupils across three schools. Species planted: Delonix regia, Mangifera indica, Persea americana, Terminalia catappa.</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-card-img"><span class="work-icon">🔥</span></div>
+        <div class="work-card-body">
+          <p class="work-card-tag">Professional · ICEED</p>
+          <h3>Clean Cooking & Carbon Finance Advocacy</h3>
+          <p>Research and communication support for Nigeria's clean cooking sector — contributing to policy briefs, stakeholder forums, press materials, and carbon finance documentation at a national level.</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-card-img"><span class="work-icon">🤖</span></div>
+        <div class="work-card-body">
+          <p class="work-card-tag">Innovation</p>
+          <h3>AI for Environmental Sustainability</h3>
+          <p>Building and sharing AI-powered research workflows, automation tools, and sustainability applications — publicly documented on LinkedIn to advance awareness of responsible AI use in environmental work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT -->
+<div class="section-wrap">
+  <section class="section" id="about">
+    <p class="s-label">About me</p>
+    <h2 class="s-title">I am not a <em>single-discipline</em> professional.<br>I never have been.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          My background is in <strong>Forestry and Wildlife Management</strong> — but from the beginning I was drawn to the bigger questions: how do you protect ecosystems when people depend on them? How do you communicate the urgency of climate change to communities that have never heard the word "biodiversity"? How do you make research matter beyond the page it's printed on?
+        </p>
+        <p>
+          Those questions led me to <strong>ICEED</strong>, where I work at the intersection of climate research, clean energy advocacy, and policy communication. They led me to found the <strong>Green Revolution Initiative</strong>, where I bring environmental education directly into schools. And they are leading me toward <strong>graduate studies internationally</strong>, where I plan to deepen my expertise in environmental health, climate resilience, and ecosystem science.
+        </p>
+        <p>
+          I am also a <strong>spoken word artist</strong>, a fashion entrepreneur, and someone who has held more leadership positions than she can count — because I believe that the people working to protect the planet need to lead, communicate, create, and connect, not just analyse.
+        </p>
+      </div>
+      <div class="about-attrs">
+        <div class="attr-card">
+          <h4>Scientific rigour</h4>
+          <p>First Class Honours backed by real field research, GIS mapping, forest inventory, and experimental design — not just coursework.</p>
+        </div>
+        <div class="attr-card">
+          <h4>Communication depth</h4>
+          <p>From policy briefs to press releases to spoken word — I translate complex ideas into language that moves people to act.</p>
+        </div>
+        <div class="attr-card">
+          <h4>Technology forward</h4>
+          <p>I don't wait for AI to arrive in the environment sector — I am already building it in, learning publicly, and sharing what I find.</p>
+        </div>
+        <div class="attr-card">
+          <h4>Community grounded</h4>
+          <p>My work starts with people. The Eco-Scholars campaign, the Green Revolution Initiative — these are not desk projects. They happen on the ground.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CERTIFICATIONS -->
+<div class="section-wrap">
+  <section class="section" id="certifications">
+    <p class="s-label">Professional Development</p>
+    <h2 class="s-title">Certifications &amp; <em>continuous learning</em></h2>
+    <p class="s-sub">Each certification was chosen deliberately to build the operational and leadership skills that environmental work demands.</p>
+
+    <div class="cert-row">
+      <div><div class="cert-name">Leadership Essentials</div><div class="cert-body">DisasterReady</div></div>
+      <span class="cert-badge">Completed</span>
+    </div>
+    <div class="cert-row">
+      <div><div class="cert-name">Project Management</div><div class="cert-body">DisasterReady</div></div>
+      <span class="cert-badge">Completed</span>
+    </div>
+    <div class="cert-row">
+      <div><div class="cert-name">MEAL Essentials — Monitoring, Evaluation, Accountability & Learning</div><div class="cert-body">DisasterReady</div></div>
+      <span class="cert-badge">Completed</span>
+    </div>
+    <div class="cert-row">
+      <div><div class="cert-name">Marketing Essentials</div><div class="cert-body">DisasterReady</div></div>
+      <span class="cert-badge">Completed</span>
+    </div>
+    <div class="cert-row">
+      <div><div class="cert-name">Nonprofit Essentials</div><div class="cert-body">DisasterReady</div></div>
+      <span class="cert-badge">Completed</span>
+    </div>
+    <div class="cert-row">
+      <div><div class="cert-name">B.Sc. Forestry and Wildlife Management — First Class Honours</div><div class="cert-body">Ahmadu Bello University, Zaria · December 2024</div></div>
+      <span class="cert-badge">First Class</span>
+    </div>
+
+    <div style="margin-top: 52px;">
+      <p class="s-label" style="margin-bottom: 16px;">Tools & platforms</p>
+      <div class="tools-grid">
+        <div class="tool-chip">Microsoft Office</div>
+        <div class="tool-chip">Google Workspace</div>
+        <div class="tool-chip">Canva</div>
+        <div class="tool-chip">Zapier</div>
+        <div class="tool-chip">AI / ChatGPT</div>
+        <div class="tool-chip">Claude AI</div>
+        <div class="tool-chip">Remote Sensing</div>
+        <div class="tool-chip">GIS / Mapping</div>
+        <div class="tool-chip">Research Design</div>
+        <div class="tool-chip">Data Analysis</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PROCESS -->
+<div class="section-wrap">
+  <section class="section">
+    <p class="s-label">How I work</p>
+    <h2 class="s-title">From evidence to <em>impact</em></h2>
+    <p class="s-sub">Every project I touch follows this logic — whether it's a research study, an advocacy campaign, or a community programme.</p>
+    <div class="process-grid">
+      <div class="proc-step">
+        <div class="proc-num">01</div>
+        <div class="proc-title">Understand the context</div>
+        <div class="proc-desc">I start with the ecosystem — ecological, social, and political. No solution works without understanding the full system it lives in.</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">02</div>
+        <div class="proc-title">Research with rigour</div>
+        <div class="proc-desc">Literature review, field data, stakeholder input, or secondary analysis — whatever the evidence base requires.</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">03</div>
+        <div class="proc-title">Communicate to move people</div>
+        <div class="proc-desc">Findings become policy briefs, campaign materials, community conversations, or spoken word — whatever the audience needs to act.</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">04</div>
+        <div class="proc-title">Measure and iterate</div>
+        <div class="proc-desc">MEAL frameworks keep me honest. I track what worked, what didn't, and how to do better — on the next project and the next.</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CTA -->
+<div class="cta-banner" id="contact">
+  <h2>Ready to work toward<br>a more sustainable future?</h2>
+  <p>Whether you're a research institution, NGO, development agency, or graduate programme — let's talk about how I can contribute.</p>
+  <div class="cta-row">
+    <a class="btn-primary" href="mailto:your@email.com">Send me an email</a>
+    <a class="btn-ghost" href="https://www.linkedin.com/in/agbo-dorcas-ojonuyo" target="_blank">Connect on LinkedIn</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Agbo Dorcas Ojonuyo</span>
+  <div class="footer-links">
+    <a href="mailto:your@email.com">Email</a>
+    <a href="https://www.linkedin.com/in/agbo-dorcas-ojonuyo" target="_blank">LinkedIn</a>
+    <a href="#about">About</a>
+  </div>
+</footer>
+
+</body>
+</html>
